@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import  classes from './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -47,50 +47,41 @@ class App extends Component {
   }
 
   render() {
-    const swag = {
-      backgroundColor: 'green',
-      font: 'bubble',
-      border: '1px solid black',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
     let people = null;
+    let btnClass = '';
 
     if(this.state.showPersons){
       people = (
-      <div>
-        {this.state.people.map((person, index )=>
-
+        <div>
+          {this.state.people.map((person, index )=>
             <Person
-                  name={person.name}
-                  age={person.age}
-                  id= {this.myId}
-                click={()=>this.deleteMethod(index)}
-                changed={(event) => this.nameChangeHandler(event, person.id)}
+              name={person.name}
+              age={person.age}
+              id= {index}
+              click={()=>this.deleteMethod(index)}
+              changed={(event) => this.nameChangeHandler(event, index)}
             />
-        )}
-    </div>
-    );
+          )}
+        </div>
+      );
+      btnClass = classes.Red;
+    }
 
-    swag.backgroundColor='red'
-  }
-
-    let classes = [];
+    let assignedClasses = [];
     if(this.state.people.length <=2){
-      classes.push("red");
+      assignedClasses.push(classes.red);
     }
     if(this.state.people.length <=1){
-      classes.push("bold");
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a React App!</h1>
-        <p className={classes.join(' ')}>Switch Name here!</p>
+        <p className={assignedClasses.join(' ')}>Switch Name here!</p>
 
         <button
-          style = {swag}
+          className={btnClass}
           onClick={this.togglePeopleHandler}>
           Toggle People
         </button>

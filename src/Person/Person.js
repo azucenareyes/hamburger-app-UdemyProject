@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import  './Person.css'
+import  classes from './Person.css'
 
 const Person = (props) => {
 
   return (
 
-    <div className="Person">
+    <div className={classes.Person}>
       <p onClick={props.click}>
         I'm a Person by the name of {props.name} and I am {props.age} years old
       </p>
