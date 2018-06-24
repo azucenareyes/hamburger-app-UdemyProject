@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import  classes from './Person.css'
 
 const Person = (props) => {
+  const rnd = Math.random();
+
 
   return (
 
